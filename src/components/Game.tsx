@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Board from "./Board";
 
+const BOARD_SIZE = 10;
+
 const initializeBoard = () => {
-  return Array(5)
+  return Array(BOARD_SIZE)
     .fill(null)
-    .map(() => Array(5).fill(""));
+    .map(() => Array(BOARD_SIZE).fill(""));
 };
 
 const Game: React.FC = () => {
@@ -28,8 +30,8 @@ const Game: React.FC = () => {
 
     // Find a valid move
     do {
-      row = Math.floor(Math.random() * 5);
-      col = Math.floor(Math.random() * 5);
+      row = Math.floor(Math.random() * BOARD_SIZE);
+      col = Math.floor(Math.random() * BOARD_SIZE);
     } while (aiMoves.some((move) => move.row === row && move.col === col));
 
     setAiMoves([...aiMoves, { row, col }]);
